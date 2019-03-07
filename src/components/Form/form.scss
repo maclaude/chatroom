@@ -1,0 +1,28 @@
+@import 'src/styles/vars';
+
+#form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3em;
+  background-color: $form-bg-color;
+  color: $form-text-color;
+  border-radius: 0 0 5px 5px;
+}
+
+.form-input {
+  position: absolute;
+  left: 1em;
+  top: 0.2em;
+  width: 90%;
+  height: 80%;
+  background-color: $form-bg-color;
+  color: $form-text-color;
+  font-size: 1.2em;
+  border: none;
+
+  &::placeholder {
+    color: $form-placeholder-color;
+  }
+}

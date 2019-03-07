@@ -6,6 +6,9 @@ import React from 'react';
 /**
  * Local import
  */
+// Components
+import Form from 'src/components/Form';
+// Styles
 import './app.scss';
 
 /**
@@ -13,7 +16,7 @@ import './app.scss';
  */
 const App = () => (
   <div id="app">
-    Chatroom
+    <Form />
   </div>
 );
 
