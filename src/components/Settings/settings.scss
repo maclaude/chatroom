@@ -1,0 +1,77 @@
+@import 'src/styles/vars';
+
+#settings {
+  display: flex;
+  justify-content: space-between;
+  height: 2.5em;
+  padding: 0.8em;
+  background-color: $settings-bg-color;
+  font-size: 1.2em;
+  color: $settings-text-color;
+  border-radius: 5px 5px 0 0;
+
+  &-left {
+    width: 30%;
+  }
+
+  &-right {
+    width: 70%;
+    text-align: right;
+
+    &-addButton,
+    &-backButton,
+    &-form-button {
+      cursor: pointer;
+    }
+
+    &-addButton:hover {
+      color: $success-color;
+    }
+    
+    &-backButton:hover {
+      color: $danger-color;
+    }
+
+    &-section,
+    &-form {
+      display: inline;
+    }
+
+    &-form {
+      animation: slide-in-right 1.5s both;
+
+      &-input {
+        background-color: $settings-bg-color;
+        width: 60%;
+        color: $settings-text-color;
+        height: 100%;
+        font-size: 1em;
+        font-weight: 300;
+        margin: auto 5px;
+        padding: 0.6em 0;
+        border: none;
+        border-bottom: 1px solid $input-border-color;
+      }
+
+      &-button:hover {
+        color:$success-color;
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+// Keyframes 
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
