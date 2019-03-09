@@ -1,0 +1,23 @@
+@import 'src/styles/vars';
+
+#messages {
+  padding: 1.5em;
+  height: calc(100% - 5.5em);
+  overflow-y: scroll;
+}
+
+.message {
+  margin-bottom: 1em;
+
+  &-author {
+    margin-bottom: 0.2em; 
+    font-size: 1.1em;
+    font-weight: 400;
+  }
+
+  &-content {
+    padding: 0 0.5em;
+    font-size: 1.1em;
+    font-weight: 300;
+  }
+}

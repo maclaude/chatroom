@@ -8,6 +8,7 @@ import React from 'react';
  */
 // Components
 import Settings from 'src/components/Settings';
+import Messages from 'src/components/Messages';
 import Form from 'src/components/Form';
 // Styles
 import './app.scss';
@@ -18,6 +19,7 @@ import './app.scss';
 const App = () => (
   <div id="app">
     <Settings />
+    <Messages />
     <Form />
   </div>
 );
