@@ -17,11 +17,9 @@ import './messages.scss';
  */
 const Messages = ({ messages }) => (
   <div id="messages">
-    {messages.map((message, index) => (
+    {messages.map(message => (
       <Message
-        // Index en key temporaire
-        // eslint-disable-next-line react/no-array-index-key
-        key={index}
+        key={message.id}
         author={message.user}
         content={message.message}
       />

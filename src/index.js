@@ -9,9 +9,12 @@ import { Provider } from 'react-redux';
 /**
  * Local import
  */
+// Component
 import App from 'src/components/App';
-
+// Store
 import store from 'src/store';
+// Action creator
+import { webSocketConnect } from 'src/store/reducer';
 
 /**
  * Render
@@ -25,5 +28,8 @@ const rootComponent = (
 // 2. La cible dans le DOM
 const target = document.getElementById('root');
 
-// rendu de react-dom : react VERS dom
+// Rendu de react-dom : react VERS dom
 render(rootComponent, target);
+
+// Connexion au webSocket
+store.dispatch(webSocketConnect());

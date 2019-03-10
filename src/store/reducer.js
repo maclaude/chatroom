@@ -15,13 +15,22 @@ const TOGGLE_SETTINGS_INPUT = 'TOGGLE_SETTINGS_INPUT';
 const CHANGE_SETTINGS_INPUT = 'CHANGE_SETTINGS_INPUT';
 const RESET_USER = 'RESET_USER';
 const CHANGE_FORM_INPUT = 'CHANGE_FORM_INPUT';
-const SEND_MESSAGE = 'SEND_MESSAGE';
+const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+
+export const WEBSOCKET_CONNECT = 'WEBSOCKET_CONNECT';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 
 /**
  * Reducer
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case RECEIVE_MESSAGE:
+      return {
+        ...state,
+        messages: [...state.messages, action.newMessage],
+      };
+
     case TOGGLE_SETTINGS_INPUT:
       return {
         ...state,
@@ -47,21 +56,11 @@ const reducer = (state = initialState, action = {}) => {
         formInputValue: action.value,
       };
 
-    case SEND_MESSAGE: {
-      // Création du nouveau message
-      const newMessage = {
-        user: state.user,
-        message: state.formInputValue,
-      };
-      // Nouveau tableau de messages
-      const messages = [...state.messages, newMessage];
-      // Nouveau state
+    case SEND_MESSAGE:
       return {
         ...state,
-        messages,
         formInputValue: '',
       };
-    }
 
     default:
       return state;
@@ -71,6 +70,15 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
+export const webSocketConnect = () => ({
+  type: WEBSOCKET_CONNECT,
+});
+
+export const receiveMessage = newMessage => ({
+  type: RECEIVE_MESSAGE,
+  newMessage,
+});
+
 export const toggleSettingsInput = () => ({
   type: TOGGLE_SETTINGS_INPUT,
 });
