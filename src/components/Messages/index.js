@@ -2,12 +2,11 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
  */
-// Temporary data
-import messages from 'src/data/messages';
 // Component
 import Message from './message';
 // Styles
@@ -16,17 +15,24 @@ import './messages.scss';
 /**
  * Code
  */
-const Messages = () => (
+const Messages = ({ messages }) => (
   <div id="messages">
-    {messages.map(message => (
+    {messages.map((message, index) => (
       <Message
-        key={message.id}
+        // Index en key temporaire
+        // eslint-disable-next-line react/no-array-index-key
+        key={index}
         author={message.user}
         content={message.message}
       />
     ))}
   </div>
 );
+
+// PropTypes validation
+Messages.propTypes = {
+  messages: PropTypes.array.isRequired,
+};
 
 /**
  * Export
