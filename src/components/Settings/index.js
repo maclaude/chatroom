@@ -4,6 +4,7 @@
 import React from 'react';
 import { FaAngleDoubleLeft, FaChevronLeft, FaCheck } from 'react-icons/fa';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -16,49 +17,35 @@ import './settings.scss';
  */
 class Settings extends React.Component {
   /**
-   * Local state
-   */
-  state = {
-    inputValue: '',
-    showInput: false,
-  }
-
-  /**
    * Handlers
    */
-  handleClick = () => {
-    const { showInput } = this.state;
-
-    this.setState({
-      inputValue: 'Anonymous',
-      showInput: !showInput,
-    });
-  }
-
   handleChange = (evt) => {
+    // Récupération de la valeur du champ
     const { value } = evt.target;
+    // Récupération des props
+    const { changeInput } = this.props;
 
-    this.setState({
-      inputValue: value,
-    });
+    changeInput(value);
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault();
 
-    this.setState({
-      showInput: false,
-    });
+    const { toggleInput } = this.props;
 
-    console.log('Form submitted');
-    // @TODO Form::handleSubmit
+    toggleInput();
   }
 
   /**
    * Render
    */
   render() {
-    const { inputValue, showInput } = this.state;
+    const {
+      inputValue,
+      displayInput,
+      toggleInput,
+      resetUser,
+    } = this.props;
 
     return (
       <div id="settings">
@@ -66,20 +53,20 @@ class Settings extends React.Component {
 
         <div id="settings-right">
 
-          <div className={classNames({ hidden: showInput })}>
+          <div className={classNames({ hidden: displayInput })}>
             <FaAngleDoubleLeft
               id="settings-right-addButton"
-              onClick={this.handleClick}
+              onClick={toggleInput}
             />
           </div>
 
           <div
             id="settings-right-form"
-            className={classNames({ hidden: !showInput })}
+            className={classNames({ hidden: !displayInput })}
           >
             <FaChevronLeft
               id="settings-right-backButton"
-              onClick={this.handleClick}
+              onClick={resetUser}
             />
             <form id="settings-right-form" onSubmit={this.handleSubmit}>
               <input
@@ -100,6 +87,15 @@ class Settings extends React.Component {
     );
   }
 }
+
+// PropTypes validation
+Settings.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  displayInput: PropTypes.bool.isRequired,
+  toggleInput: PropTypes.func.isRequired,
+  changeInput: PropTypes.func.isRequired,
+  resetUser: PropTypes.func.isRequired,
+};
 
 /**
  * Export

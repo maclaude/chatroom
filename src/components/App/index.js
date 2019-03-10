@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Components
-import Settings from 'src/components/Settings';
+import Settings from 'src/containers/Settings';
 import Messages from 'src/components/Messages';
 import Form from 'src/containers/Form';
 // Styles

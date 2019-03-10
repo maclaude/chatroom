@@ -2,6 +2,7 @@
  * Initial State
  */
 const initialState = {
+  displaySettingsInput: false,
   user: 'Anonymous',
   formInputValue: '',
   messages: [],
@@ -10,6 +11,9 @@ const initialState = {
 /**
  * Types
  */
+const TOGGLE_SETTINGS_INPUT = 'TOGGLE_SETTINGS_INPUT';
+const CHANGE_SETTINGS_INPUT = 'CHANGE_SETTINGS_INPUT';
+const RESET_USER = 'RESET_USER';
 const CHANGE_FORM_INPUT = 'CHANGE_FORM_INPUT';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
@@ -18,6 +22,25 @@ const SEND_MESSAGE = 'SEND_MESSAGE';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case TOGGLE_SETTINGS_INPUT:
+      return {
+        ...state,
+        displaySettingsInput: !state.displaySettingsInput,
+      };
+
+    case CHANGE_SETTINGS_INPUT:
+      return {
+        ...state,
+        user: action.value,
+      };
+
+    case RESET_USER:
+      return {
+        ...state,
+        user: 'Anonymous',
+        displaySettingsInput: !state.displaySettingsInput,
+      };
+
     case CHANGE_FORM_INPUT:
       return {
         ...state,
@@ -48,6 +71,19 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
+export const toggleSettingsInput = () => ({
+  type: TOGGLE_SETTINGS_INPUT,
+});
+
+export const changeSettingsInput = value => ({
+  type: CHANGE_SETTINGS_INPUT,
+  value,
+});
+
+export const resetUser = () => ({
+  type: RESET_USER,
+});
+
 export const changeFormInput = value => ({
   type: CHANGE_FORM_INPUT,
   value,
