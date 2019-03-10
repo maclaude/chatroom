@@ -9,7 +9,7 @@ import React from 'react';
 // Components
 import Settings from 'src/components/Settings';
 import Messages from 'src/components/Messages';
-import Form from 'src/components/Form';
+import Form from 'src/containers/Form';
 // Styles
 import './app.scss';
 

@@ -2,24 +2,43 @@
  * Initial State
  */
 const initialState = {
-  message: 'Hello',
+  user: 'Anonymous',
+  formInputValue: '',
+  messages: [],
 };
 
 /**
  * Types
  */
-const DO_SOMETHING = 'DO_SOMETHING';
+const CHANGE_FORM_INPUT = 'CHANGE_FORM_INPUT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 /**
  * Reducer
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case CHANGE_FORM_INPUT:
       return {
         ...state,
-        message: action.message,
+        formInputValue: action.value,
       };
+
+    case SEND_MESSAGE: {
+      // Création du nouveau message
+      const newMessage = {
+        user: state.user,
+        message: state.formInputValue,
+      };
+      // Nouveau tableau de messages
+      const messages = [...state.messages, newMessage];
+      // Nouveau state
+      return {
+        ...state,
+        messages,
+        formInputValue: '',
+      };
+    }
 
     default:
       return state;
@@ -29,9 +48,13 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const doSomething = message => ({
-  type: DO_SOMETHING,
-  message,
+export const changeFormInput = value => ({
+  type: CHANGE_FORM_INPUT,
+  value,
+});
+
+export const sendMessage = () => ({
+  type: SEND_MESSAGE,
 });
 
 /**
