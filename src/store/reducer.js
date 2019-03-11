@@ -1,9 +1,12 @@
+import uuidv4 from 'uuid/v4';
+
 /**
  * Initial State
  */
 const initialState = {
   displaySettingsInput: false,
   user: 'Anonymous',
+  userId: uuidv4(),
   formInputValue: '',
   messages: [],
 };

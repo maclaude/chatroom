@@ -1,23 +1,39 @@
 @import 'src/styles/vars';
 
 #messages {
+  position: relative;
   padding: 1.5em;
   height: calc(100% - 5.5em);
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
   margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 10px;
+  width: 60%;
+  height: fit-content;
 
   &-author {
-    margin-bottom: 0.2em; 
-    font-size: 1.1em;
+    margin-bottom: 0.5em; 
+    font-size: 0.9em;
     font-weight: 400;
   }
 
   &-content {
-    padding: 0 0.5em;
     font-size: 1.1em;
     font-weight: 300;
+    word-wrap: break-word;
+  }
+
+  &-sent {
+    background-color: $message-sent-bg-color;
+  }
+
+  &-received {
+    background-color: $message-received-bg-color;
+    align-self: flex-end;
   }
 }

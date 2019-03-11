@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Component
-import Message from './message';
+import Message from 'src/containers/Messages/message';
 // Styles
 import './messages.scss';
 
@@ -21,6 +21,7 @@ const Messages = ({ messages }) => (
       <Message
         key={message.id}
         author={message.user}
+        authorId={message.userId}
         content={message.message}
       />
     ))}

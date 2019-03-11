@@ -36,6 +36,7 @@ const socketMiddeware = store => next => (action) => {
       // Création du nouveau message
       const message = {
         user: state.user,
+        userId: state.userId,
         message: state.formInputValue,
       };
 

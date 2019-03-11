@@ -2,7 +2,7 @@
  * NPM import
  */
 import React from 'react';
-import { FaAngleDoubleLeft, FaChevronLeft, FaCheck } from 'react-icons/fa';
+import { FaAngleDoubleLeft, FaAngleDoubleRight, FaCheck } from 'react-icons/fa';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -64,7 +64,7 @@ class Settings extends React.Component {
             id="settings-right-form"
             className={classNames({ hidden: !displayInput })}
           >
-            <FaChevronLeft
+            <FaAngleDoubleRight
               id="settings-right-backButton"
               onClick={resetUser}
             />
