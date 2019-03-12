@@ -8,6 +8,8 @@ import io from 'socket.io-client';
 * Local import
 */
 import { WEBSOCKET_CONNECT, SEND_MESSAGE, receiveMessage } from 'src/store/reducer';
+// Utils
+import getCurrentTime from 'src/utils/getCurrentTime';
 
 /**
  * Middleware
@@ -35,9 +37,10 @@ const socketMiddeware = store => next => (action) => {
 
       // Création du nouveau message
       const message = {
-        user: state.user,
-        userId: state.userId,
-        message: state.formInputValue,
+        author: state.user,
+        authorId: state.userId,
+        time: getCurrentTime(),
+        content: state.formInputValue,
       };
 
       // Envoi du nouveau message

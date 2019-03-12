@@ -37,9 +37,7 @@ class Messages extends React.Component {
         {messages.map(message => (
           <Message
             key={message.id}
-            author={message.user}
-            authorId={message.userId}
-            content={message.message}
+            {...message}
           />
         ))}
       </div>

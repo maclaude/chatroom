@@ -16,10 +16,19 @@
   width: 60%;
   height: fit-content;
 
-  &-author {
+  &-header {
     margin-bottom: 0.5em; 
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-author {
     font-size: 0.9em;
     font-weight: 400;
+  }
+
+  &-time {
+    font-size: 0.7em;
   }
 
   &-content {

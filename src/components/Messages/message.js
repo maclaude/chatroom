@@ -16,6 +16,7 @@ const Message = ({
   userId,
   author,
   authorId,
+  time,
   content,
 }) => {
   // Vérification que l'utilisateur est l'auteur du message
@@ -30,7 +31,10 @@ const Message = ({
       },
     )}
     >
-      <h1 className="message-author">{author}</h1>
+      <div className="message-header">
+        <h1 className="message-author">{author}</h1>
+        <p className="message-time">{time}</p>
+      </div>
       <p className="message-content">{content}</p>
     </div>
   );
@@ -41,6 +45,7 @@ Message.propTypes = {
   userId: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   authorId: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
 };
 
